@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-// Inclure le fichier de connexion à la base de données
 require_once(__DIR__ . '/../includes/db/db.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupérer les données du formulaire
     $username = $_POST['username'];
     $password = $_POST['password'];
 
@@ -17,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        // Vérifier si le mot de passe correspond
         if (password_verify($password, $user['password'])) {
             // Authentification réussie, définir les variables de session
             $_SESSION['user_id'] = $user['id'];
@@ -29,16 +26,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: ../admin/admin.php/');
                 exit();
             } else {
-                // Redirection vers une page utilisateur standard
                 header('Location: user_page.php');
                 exit();
             }
         } else {
-            // Mot de passe incorrect
             $error_message = "Mot de passe incorrect";
         }
     } else {
-        // Utilisateur non trouvé
         $error_message = "Identifiant incorrect";
     }
 }
@@ -49,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <!-- Ajoutez ici vos balises meta, liens CSS, etc. -->
 </head>
 <body>
 

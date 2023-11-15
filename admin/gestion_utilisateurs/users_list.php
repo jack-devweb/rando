@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des Utilisateurs</title>
-    <!-- Ajoutez ici vos balises meta, liens CSS, etc. -->
 </head>
 <body>
 
@@ -21,7 +20,7 @@
     <tbody>
         <!-- PHP : Récupération des utilisateurs depuis la base de données et affichage dans le tableau -->
         <?php
-require_once(__DIR__ . '/../../includes/db/db.php'); // Inclure le fichier de connexion à la base de données
+require_once(__DIR__ . '/../../includes/db/db.php'); 
 
         $query = "SELECT * FROM utilisateurs";
         $stmt = $connexion->query($query);

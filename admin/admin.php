@@ -18,7 +18,6 @@
     <input type="text" id="hike_name" name="hike_name" required><br>
     <label for="hike_description">Description :</label><br>
     <textarea id="hike_description" name="hike_description" required></textarea><br>
-    <!-- Ajoutez d'autres champs pour les détails de la randonnée -->
     <input type="submit" value="Ajouter" name="add_hike">
 </form>
 
@@ -35,14 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_hike'])) {
     // Récupérer les données du formulaire
     $hike_name = $_POST['hike_name'];
     $hike_description = $_POST['hike_description'];
-    // Ajoutez d'autres champs si nécessaire
 
     // Requête pour insérer une nouvelle randonnée dans la base de données
     $query = "INSERT INTO randonnees (nom, description) VALUES (:nom, :description)";
     $stmt = $connexion->prepare($query);
     $stmt->bindParam(':nom', $hike_name);
     $stmt->bindParam(':description', $hike_description);
-    // Ajoutez d'autres liaisons de paramètres si nécessaire
 
     // Exécution de la requête d'insertion
     if ($stmt->execute()) {
@@ -61,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id'])) {
     $stmt->bindParam(':id', $hike_id);
 
     if ($stmt->execute()) {
-        // Redirection vers cette même page pour actualiser la liste après la suppression
         header('Location: admin.php');
         exit();
     } else {
