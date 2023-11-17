@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifier les privilèges administratifs
             if ($user['admin'] == 1) {
                 // Redirection vers le tableau de bord administratif
-                header('Location: ../admin/admin.php/');
+                header('Location: ../admin/ad.php/');
                 exit();
             } else {
-                header('Location: user_page.php');
+                header('Location: user.php');
                 exit();
             }
         } else {

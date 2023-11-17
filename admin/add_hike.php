@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/../includes/db/db.php');
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
     $hike_name = $_POST['hike_name'] ?? '';
@@ -13,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Début de la transaction
         $connexion->beginTransaction();
 
         // Requête pour insérer une nouvelle randonnée dans la base de données
@@ -23,9 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':description', $hike_description);
 
         if ($stmt->execute()) {
-            // Validation et envoi des modifications à la base de données
             $connexion->commit();
-            header('Location: admin.php');
+            header('Location: ad.php');
             exit();
         } else {
             // En cas d'échec, annuler les modifications
