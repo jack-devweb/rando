@@ -16,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $connexion->beginTransaction();
 
-        // Requête pour insérer une nouvelle randonnée dans la base de données
         $query = "INSERT INTO randonnees (nom, description) VALUES (:nom, :description)";
         $stmt = $connexion->prepare($query);
         $stmt->bindParam(':nom', $hike_name);
@@ -27,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: ad.php');
             exit();
         } else {
-            // En cas d'échec, annuler les modifications
             $connexion->rollBack();
             echo "Erreur lors de l'ajout de la randonnée.";
         }

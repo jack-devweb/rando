@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user) {
         if (password_verify($password, $user['password'])) {
             // Authentification réussie, définir les variables de session
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['utilisateur_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             
             // Vérifier les privilèges administratifs

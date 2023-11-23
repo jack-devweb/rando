@@ -47,3 +47,37 @@ nav ul li a:hover {
     width: 100%;
     height: auto;
 }
+.rating {
+    display: flex;
+    flex-direction:row;
+}
+
+.rating input {
+    display: none;
+    flex-direction:row-reverse;
+}
+
+.rating label {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    background-color: #ccc;
+}
+
+.rating label:before {
+    content: '\2605';
+    display: block;
+    color: #777;
+    font-size: 24px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.rating input:checked ~ label:before,
+.rating input:checked ~ label ~ label:before {
+    color: #ffcc00;
+}
+.map {
+    height: 300px;
+    width: 100%;
+}
